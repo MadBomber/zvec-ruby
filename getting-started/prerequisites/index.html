@@ -663,6 +663,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#optional-pre-built-zvec-library-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Pre-built zvec Library (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verifying-your-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1796,6 +1807,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#optional-pre-built-zvec-library-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional: Pre-built zvec Library (Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verifying-your-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1853,13 +1875,13 @@
 </div>
 </div>
 <h2 id="icu4c">ICU4C<a class="headerlink" href="#icu4c" title="Permanent link">&para;</a></h2>
-<p>The zvec C++ library depends on ICU for Unicode support.</p>
+<p>The zvec C++ library depends on ICU for Unicode support (via Apache Arrow).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">macOS (Homebrew)</label><label for="__tabbed_2_2">Ubuntu/Debian</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>brew<span class="w"> </span>install<span class="w"> </span>icu4c@78
 </span></code></pre></div>
-<p>The CMake preset expects ICU at <code>/opt/homebrew/opt/icu4c@78</code>. If your Homebrew prefix differs, adjust the <code>CMAKE_PREFIX_PATH</code> in <code>ext/CMakePresets.json</code>.</p>
+<p>The CMake build expects ICU at <code>/opt/homebrew/opt/icu4c@78</code>. If your Homebrew prefix differs, adjust the <code>CMAKE_PREFIX_PATH</code> in <code>ext/CMakePresets.json</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libicu-dev
@@ -1873,11 +1895,21 @@
 <li><strong>macOS</strong>: Xcode Command Line Tools (<code>xcode-select --install</code>)</li>
 <li><strong>Linux</strong>: GCC 9+ or Clang 10+</li>
 </ul>
+<h2 id="optional-pre-built-zvec-library-recommended">Optional: Pre-built zvec Library (Recommended)<a class="headerlink" href="#optional-pre-built-zvec-library-recommended" title="Permanent link">&para;</a></h2>
+<p>Pre-building the zvec C++ library with Homebrew makes <code>gem install zvec</code> fast (~10 seconds instead of ~10 minutes):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>brew<span class="w"> </span>tap<span class="w"> </span>madbomber/zvec<span class="w"> </span>https://github.com/MadBomber/zvec-ruby.git
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>brew<span class="w"> </span>install<span class="w"> </span>madbomber/zvec/zvec
+</span></code></pre></div>
+<p>Without this, the gem will download and compile the full C++ dependency tree (Arrow, RocksDB, protobuf, etc.) from source during installation.</p>
 <h2 id="verifying-your-environment">Verifying Your Environment<a class="headerlink" href="#verifying-your-environment" title="Permanent link">&para;</a></h2>
 <p>Run the following to confirm everything is in place:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ruby<span class="w"> </span>--version<span class="w">      </span><span class="c1"># &gt;= 3.2.0</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cmake<span class="w"> </span>--version<span class="w">     </span><span class="c1"># &gt;= 3.26</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ninja<span class="w"> </span>--version<span class="w">     </span><span class="c1"># any recent version</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ruby<span class="w"> </span>--version<span class="w">      </span><span class="c1"># &gt;= 3.2.0</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cmake<span class="w"> </span>--version<span class="w">     </span><span class="c1"># &gt;= 3.26</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>ninja<span class="w"> </span>--version<span class="w">     </span><span class="c1"># any recent version</span>
+</span></code></pre></div>
+<p>If you installed the Homebrew formula:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>brew<span class="w"> </span>info<span class="w"> </span>zvec<span class="w">      </span><span class="c1"># shows installed version and prefix</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>pkg-config<span class="w"> </span>--libs<span class="w"> </span>zvec<span class="w">  </span><span class="c1"># should print -Wl,-force_load,...</span>
 </span></code></pre></div>
 
 
