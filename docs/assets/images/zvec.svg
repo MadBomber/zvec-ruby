@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with EazyDraw for Mac ( https://www.eazydraw.com/ ) -->
+
+<svg
+    version="1.1"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns="http://www.w3.org/2000/svg"
+    width="388"
+    height="388"
+    viewBox="0, 0, 388, 388"
+    preserveAspectRatio="none"
+    id="svg2">
+   <defs
+       id="defs_88643857"/>
+   <metadata
+       id="metadata7">
+      <rdf:RDF>
+         <cc:Work
+             rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            <dc:title></dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g
+       id="layer_Paper"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;fill-rule:nonzero;stroke-linecap:square;stroke-linejoin:miter;stroke-width:1;stroke-miterlimit:10">
+      <circle
+          style="fill:none;stroke:#CC2233;stroke-linecap:butt;stroke-width:28;stroke-miterlimit:4"
+          id="04281A17"
+          cx="194"
+          cy="194"
+          r="180"/>
+      <circle
+          style="fill:none;stroke:#CC2233;stroke-linecap:butt;stroke-width:22;stroke-miterlimit:4"
+          id="14281A17"
+          cx="194"
+          cy="194"
+          r="120"/>
+      <circle
+          style="fill:#FFFFFF;stroke:none"
+          id="24281A17"
+          cx="194"
+          cy="194"
+          r="109"/>
+      <text
+          id="34281A17"
+          style="fill:#1A1A1A;stroke:none"
+          font-family="Arial Black"
+          font-size="130"
+          font-weight="bold"
+          font-style="normal">
+<tspan x="117.059082031" y="222">Z</tspan>      </text>
+      <text
+          id="44281A17"
+          style="fill:#1A1A1A;stroke:none"
+          font-family="Arial"
+          font-size="50"
+          font-weight="bold"
+          font-style="normal">
+<tspan x="183.588574219" y="199.775">vec</tspan>      </text>
+      <g
+          id="5F543E47">
+         <polygon
+             style="fill:#E63946;stroke:none"
+             id="6F543E47"
+             points="223.2,205.375 278.2,205.375 289.2,221.875 212.2,221.875"/>
+         <polygon
+             style="fill:#9B1B30;stroke:none"
+             id="7F543E47"
+             points="212.2,221.875 223.2,205.375 250.7,260.375"/>
+         <polygon
+             style="fill:#CC2233;stroke:none"
+             id="8F543E47"
+             points="212.2,221.875 289.2,221.875 250.7,260.375"/>
+         <polygon
+             style="fill:#A81D2D;stroke:none"
+             id="9F543E47"
+             points="289.2,221.875 278.2,205.375 250.7,260.375"/>
+         <polygon
+             style="fill:#F25C69;stroke:none"
+             id="AF543E47"
+             points="223.2,205.375 250.7,205.375 239.7,221.875 212.2,221.875"/>
+         <polygon
+             style="fill:#E04050;stroke:none"
+             id="BF543E47"
+             points="250.7,205.375 278.2,205.375 289.2,221.875 261.7,221.875"/>
+         <polygon
+             style="fill:#D4293A;stroke:none"
+             id="CF543E47"
+             points="239.7,221.875 261.7,221.875 250.7,260.375"/>
+      </g>
+   </g>
+</svg>

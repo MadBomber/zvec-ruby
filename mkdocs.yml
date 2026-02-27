@@ -35,7 +35,8 @@ theme:
 
   icon:
     repo: fontawesome/brands/github
-    logo: material/database-search
+  logo: assets/images/zvec3.svg
+  favicon: assets/images/zvec3.svg
 
   features:
     - navigation.instant
