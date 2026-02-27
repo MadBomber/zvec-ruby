@@ -36,28 +36,38 @@ Ruby bindings for Alibaba's [zvec](https://github.com/alibaba/zvec) C++ vector d
 - Ruby >= 3.2.0
 - CMake >= 3.26
 - A C++17 compiler (Clang or GCC)
-- ICU4C: `brew install icu4c@78` (macOS — CMake expects it at `/opt/homebrew/opt/icu4c@78`)
+- ICU4C: `brew install icu4c@78` (macOS)
 
 ## Installation
 
-Add to your Gemfile:
+### Recommended: Pre-build with Homebrew (fast)
 
-```ruby
-gem "zvec"
-```
-
-Then build the native extension:
+Pre-building the zvec C++ library avoids a lengthy source compilation during gem install:
 
 ```bash
+brew tap madbomber/zvec https://github.com/MadBomber/zvec-ruby.git
+brew install madbomber/zvec/zvec
+gem install zvec          # ~10 seconds
+```
+
+### Alternative: Build from source (slow)
+
+Without Homebrew, the gem fetches and compiles the full C++ dependency tree (~10 minutes):
+
+```bash
+gem install zvec
+```
+
+### Development (from source checkout)
+
+```bash
+git clone --recurse-submodules https://github.com/MadBomber/zvec-ruby.git
+cd zvec-ruby
 bundle install
 cd ext && cmake --preset macos-release && cmake --build build/macos-release && cd ..
 ```
 
-For development/debug builds:
-
-```bash
-cd ext && cmake --preset macos-debug && cmake --build build/macos-debug && cd ..
-```
+For debug builds use the `macos-debug` preset instead.
 
 ## Quick Start
 

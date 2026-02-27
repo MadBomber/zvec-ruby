@@ -30,4 +30,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rice", "~> 4.11"
+
+  spec.post_install_message = <<~MSG
+    zvec installed successfully!
+
+    Tip: For faster future installs, pre-build the C++ library with Homebrew:
+      brew tap madbomber/zvec https://github.com/MadBomber/zvec-ruby.git
+      brew install madbomber/zvec/zvec
+  MSG
 end

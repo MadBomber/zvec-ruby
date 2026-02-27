@@ -7,7 +7,8 @@ Make `gem install zvec` fast by pre-building the zvec C++ library via Homebrew. 
 **End-user experience:**
 
 ```bash
-brew install zvec
+brew tap madbomber/zvec https://github.com/MadBomber/zvec-ruby.git
+brew install madbomber/zvec/zvec
 gem install zvec
 ```
 
