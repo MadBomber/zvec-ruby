@@ -1,0 +1,41 @@
+# Build artifacts (CMake/C++)
+/ext/build/
+/ext/dist/
+*.o
+*.a
+*.so
+*.dylib
+
+# Compiled Ruby extension
+/lib/*.bundle
+/lib/*.so
+
+# Bundler
+/.bundle/
+/vendor/bundle/
+
+# Gem packaging
+/pkg/
+
+# macOS
+.DS_Store
+
+# Temp and logs
+*.log
+/tmp/
+
+# Test coverage
+/coverage/
+
+# Documentation
+/.yardoc/
+/_yardoc/
+/doc/
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+tags

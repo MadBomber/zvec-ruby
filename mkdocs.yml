@@ -1,0 +1,167 @@
+# MkDocs Configuration for Zvec Ruby Gem Documentation
+site_name: Zvec Ruby
+site_description: Ruby bindings for Alibaba's zvec C++ vector database
+site_author: Dewayne VanHoozer
+site_url: https://madbomber.github.io/zvec-ruby
+copyright: Copyright &copy; 2026 Dewayne VanHoozer
+
+# Repository information
+repo_name: MadBomber/zvec
+repo_url: https://github.com/MadBomber/zvec
+edit_uri: edit/main/docs/
+
+# Configuration
+theme:
+  name: material
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/database-search
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - tags
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: MadBomber
+      repo: zvec
+      normalize_issue_symbols: true
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra CSS
+extra_css:
+  - assets/css/custom.css
+
+# Social media and extra configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MadBomber/zvec
+      name: Zvec on GitHub
+    - icon: fontawesome/solid/gem
+      link: https://rubygems.org/gems/zvec
+      name: Zvec on RubyGems
+
+# Navigation
+nav:
+  - Home:
+      - Overview: index.md
+  - Getting Started:
+      - getting-started/index.md
+      - Prerequisites: getting-started/prerequisites.md
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
+  - Guides:
+      - guides/index.md
+      - Schemas and Fields: guides/schemas-and-fields.md
+      - Documents: guides/documents.md
+      - Collections: guides/collections.md
+      - Vector Search: guides/vector-search.md
+      - Filtered Queries: guides/filtered-queries.md
+      - Index Tuning: guides/index-tuning.md
+      - Configuration: guides/configuration.md
+      - Error Handling: guides/error-handling.md
+  - API Reference:
+      - api/index.md
+      - FieldSchema: api/field-schema.md
+      - CollectionSchema: api/collection-schema.md
+      - Doc: api/doc.md
+      - Collection: api/collection.md
+      - Index Parameters: api/index-params.md
+      - Query Parameters: api/query-params.md
+      - VectorQuery: api/vector-query.md
+      - CollectionOptions: api/collection-options.md
+      - Status and Errors: api/status-and-errors.md
+      - Global Configuration: api/global-config.md
+      - Enums: api/enums.md
+  - Architecture:
+      - architecture/index.md
+      - Build System: architecture/build-system.md
+      - Native Extension: architecture/native-extension.md
+  - Examples:
+      - examples/index.md
+      - Basic Usage: examples/basic-usage.md
+      - Semantic Search: examples/semantic-search.md

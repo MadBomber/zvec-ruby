@@ -1,0 +1,12 @@
+/* Custom styles for Zvec documentation */
+
+/* Slightly tighter table cells */
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  padding: 0.5em 0.75em;
+}
+
+/* Code block font size */
+.md-typeset code {
+  font-size: 0.85em;
+}
