@@ -79,7 +79,7 @@ else()
     FetchContent_Declare(
       zvec_src
       GIT_REPOSITORY https://github.com/alibaba/zvec.git
-      GIT_TAG        232803611ea91abc96904a92c878c4c67ddf73e6
+      GIT_TAG        1d5aeeed1df6e104443edf23891798f1ff0a8bf7
       GIT_SHALLOW    FALSE
       GIT_SUBMODULES_RECURSE TRUE
     )
@@ -156,6 +156,12 @@ if(ZVEC_PREBUILT)
     "${ZVEC_INCLUDE_DIR}"
   )
   target_link_libraries(zvec_ext PRIVATE -Wl,-force_load,${ZVEC_LIBRARY})
+
+  # ICU4C is required at runtime (Arrow uses it for Unicode support)
+  find_package(ICU COMPONENTS uc data i18n)
+  if(ICU_FOUND)
+    target_link_libraries(zvec_ext PRIVATE ICU::uc ICU::data ICU::i18n)
+  endif()
 else()
   # --- Source build: link against individual zvec targets ---
   target_include_directories(zvec_ext PRIVATE
