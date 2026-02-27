@@ -1,3 +1,5 @@
-$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+# frozen_string_literal: true
+
+require "bundler/setup"
 require "zvec"
 require "minitest/autorun"

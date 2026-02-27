@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Zvec
   module CollectionConvenience
     # Convenience: build a VectorQuery and execute it
@@ -22,10 +24,8 @@ module Zvec
   # Block-form open: yields the collection and flushes on block exit
   def self.open_collection(path, options: nil)
     col = Collection.open(path, options)
-    begin
-      yield col
-    ensure
-      col.flush
-    end
+    yield col
+  ensure
+    col&.flush
   end
 end

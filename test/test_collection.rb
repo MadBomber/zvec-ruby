@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 require "tmpdir"
 require "fileutils"
@@ -122,7 +124,7 @@ class TestCollection < Minitest::Test
     stats = col2.stats
     assert_equal 1, stats.doc_count
 
-    col2.send(:"destroy!")
+    col2.destroy!
   ensure
     FileUtils.rm_rf(dir) if dir
   end
