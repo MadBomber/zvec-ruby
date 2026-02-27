@@ -29,7 +29,7 @@
 Ruby bindings for Alibaba's [zvec](https://github.com/alibaba/zvec) C++ vector database library. Store, index, and query high-dimensional vectors alongside scalar metadata — all from Ruby. The native extension uses [Rice](https://github.com/ruby-rice/rice) (v4.11) for C++/Ruby interop and CMake for building. The zvec C++ source is included as a git submodule.
 
 > [!CAUTION]
-> I set `rake install` up to mirror (I hope) the kind of performance that you can expect from a `gem install zvec` which will compile the actual zvec source on the user's machine.  This will take several minutes.  It may not work on all platforms. I'm not sure that it will work at all because there are so many pieces and so many platforms.
+> Without the Homebrew formula, `gem install zvec` compiles the entire zvec C++ dependency tree from source (~10 minutes). Pre-building with Homebrew reduces this to ~10 seconds. The source build may not work on all platforms.
 
 ## Prerequisites
 
