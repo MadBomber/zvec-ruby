@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Dewayne VanHoozer"]
   spec.email   = ["dewayne@vanhoozer.me"]
 
-  spec.summary     = "Ruby bindings for Alibaba zvec vector database"
-  spec.description = "Native Ruby extension providing bindings to the zvec C++ vector database library via Rice."
+  spec.summary     = "EXPERIMENTAL - DO NOT INSTALL - Ruby bindings for Alibaba zvec vector database"
+  spec.description = "Highly experimental. Do not install. Native Ruby extension providing bindings to the zvec C++ vector database library via Rice. This gem is an experimental collaboration with Claude and is not ready for production use."
   spec.homepage    = "https://github.com/MadBomber/zvec"
   spec.license     = "MIT"
 
