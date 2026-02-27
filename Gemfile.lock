@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    zvec (0.0.1)
+    zvec (0.0.2)
       rice (~> 4.11)
 
 GEM
@@ -124,7 +124,7 @@ CHECKSUMS
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   zeitwerk (2.7.5) sha256=d8da92128c09ea6ec62c949011b00ed4a20242b255293dd66bf41545398f73dd
-  zvec (0.0.1)
+  zvec (0.0.2)
 
 BUNDLED WITH
   4.0.6
