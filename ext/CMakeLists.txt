@@ -10,6 +10,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# ICU4C is required by Arrow (via Boost.Locale). On macOS with Homebrew,
+# add the default path if CMAKE_PREFIX_PATH isn't already set (presets set it).
+if(APPLE AND NOT CMAKE_PREFIX_PATH)
+  set(_ICU_PATH "/opt/homebrew/opt/icu4c@78")
+  if(EXISTS "${_ICU_PATH}")
+    list(APPEND CMAKE_PREFIX_PATH "${_ICU_PATH}")
+    message(STATUS "Added ICU4C to CMAKE_PREFIX_PATH: ${_ICU_PATH}")
+  endif()
+endif()
+
 # --- Fetch Rice (header-only C++ Ruby bindings) ---
 include(FetchContent)
 FetchContent_Declare(
@@ -24,15 +34,42 @@ FetchContent_MakeAvailable(rice)
 list(PREPEND CMAKE_MODULE_PATH "${rice_SOURCE_DIR}")
 find_package(Ruby REQUIRED COMPONENTS Development)
 
-# --- Build zvec as subdirectory ---
-set(ZVEC_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../vendor/zvec")
-
-# Disable parts we don't need
+# Disable parts of zvec we don't need (must be set before add_subdirectory)
 set(BUILD_PYTHON_BINDINGS OFF CACHE BOOL "" FORCE)
 set(BUILD_TOOLS OFF CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
 set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+
+# --- Locate or fetch zvec C++ source ---
+set(_ZVEC_LOCAL "${CMAKE_CURRENT_SOURCE_DIR}/../vendor/zvec")
+
+if(EXISTS "${_ZVEC_LOCAL}/CMakeLists.txt")
+  # Development: use the git submodule
+  message(STATUS "Using local zvec from ${_ZVEC_LOCAL}")
+  set(ZVEC_ROOT "${_ZVEC_LOCAL}")
+else()
+  # Gem install: fetch zvec from GitHub (download only, add_subdirectory below)
+  message(STATUS "vendor/zvec not found — fetching from GitHub")
+  FetchContent_Declare(
+    zvec_src
+    GIT_REPOSITORY https://github.com/alibaba/zvec.git
+    GIT_TAG        232803611ea91abc96904a92c878c4c67ddf73e6
+    GIT_SHALLOW    FALSE
+    GIT_SUBMODULES_RECURSE TRUE
+  )
+  FetchContent_GetProperties(zvec_src)
+  if(NOT zvec_src_POPULATED)
+    FetchContent_Populate(zvec_src)
+  endif()
+  set(ZVEC_ROOT "${zvec_src_SOURCE_DIR}")
+
+  # zvec's subdirectory CMakeLists expect cmake/ relative to CMAKE_SOURCE_DIR
+  # (in development, ext/cmake is a symlink to ../vendor/zvec/cmake)
+  if(NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/bazel.cmake")
+    file(COPY "${ZVEC_ROOT}/cmake/" DESTINATION "${CMAKE_SOURCE_DIR}/cmake/")
+  endif()
+endif()
 
 # zvec uses PROJECT_ROOT_DIR internally
 set(PROJECT_ROOT_DIR "${ZVEC_ROOT}" CACHE PATH "" FORCE)
@@ -115,13 +152,20 @@ foreach(lib ${ZVEC_ALGO_LIBS})
 endforeach()
 target_link_libraries(zvec_ext PRIVATE zvec_db)
 
-# Output directly to lib/ with correct Ruby suffix
+# Output directory: use CMAKE_LIBRARY_OUTPUT_DIRECTORY if set by RubyGems,
+# otherwise default to the local lib/ directory (development builds)
+if(CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+  set(_EXT_OUTPUT_DIR "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+else()
+  set(_EXT_OUTPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../lib")
+endif()
+
 set_target_properties(zvec_ext PROPERTIES
   PREFIX ""
   SUFFIX ".bundle"
-  LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../lib"
-  LIBRARY_OUTPUT_DIRECTORY_DEBUG "${CMAKE_CURRENT_SOURCE_DIR}/../lib"
-  LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_CURRENT_SOURCE_DIR}/../lib"
+  LIBRARY_OUTPUT_DIRECTORY "${_EXT_OUTPUT_DIR}"
+  LIBRARY_OUTPUT_DIRECTORY_DEBUG "${_EXT_OUTPUT_DIR}"
+  LIBRARY_OUTPUT_DIRECTORY_RELEASE "${_EXT_OUTPUT_DIR}"
 )
 
 # Suppress -Werror=return-type from zvec propagating to Rice headers
