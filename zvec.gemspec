@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary     = "EXPERIMENTAL - DO NOT INSTALL - Ruby bindings for Alibaba zvec vector database"
   spec.description = "Highly experimental. Do not install. Native Ruby extension providing bindings to the zvec C++ vector database library via Rice. This gem is an experimental collaboration with Claude and is not ready for production use."
-  spec.homepage    = "https://github.com/MadBomber/zvec"
+  spec.homepage    = "https://github.com/MadBomber/zvec-ruby"
   spec.license     = "MIT"
 
   spec.required_ruby_version = ">= 4.0"
