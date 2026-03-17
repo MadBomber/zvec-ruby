@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Dewayne VanHoozer"]
   spec.email   = ["dewayne@vanhoozer.me"]
 
-  spec.summary     = "EXPERIMENTAL - DO NOT INSTALL - Ruby bindings for Alibaba zvec vector database"
-  spec.description = "Highly experimental. Do not install. Native Ruby extension providing bindings to the zvec C++ vector database library via Rice. This gem is an experimental collaboration with Claude and is not ready for production use."
+  spec.summary     = "Fast vector database for Ruby — native bindings to Alibaba's zvec C++ library"
+  spec.description = "Add vector search to your Ruby apps without external services. zvec provides native bindings to Alibaba's high-performance C++ vector database via Rice, supporting HNSW, IVF, and flat indexes with multiple distance metrics. Build semantic search, recommendations, RAG pipelines, and similarity matching with pure Ruby — no HTTP APIs, no infrastructure, no latency overhead."
   spec.homepage    = "https://github.com/MadBomber/zvec-ruby"
   spec.license     = "MIT"
 

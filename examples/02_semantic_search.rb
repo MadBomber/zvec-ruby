@@ -13,7 +13,7 @@
 #
 # Run:  bundle exec ruby examples/02_semantic_search.rb
 
-require "bundler/setup"
+# require "bundler/setup"
 require "zvec"
 require "informers"
 require "tmpdir"
